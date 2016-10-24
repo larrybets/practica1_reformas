@@ -1,16 +1,22 @@
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by DAM on 11/10/16.
  */
-public class cliente {
+public class cliente implements Serializable {
 
     private String nombre;
     private String apellidos;
     private String numero;
     private String dni;
     private boolean vip;
-    private List presupuesto;
+    private ListaPresupuestos presupuestos;
+
+
+    public cliente() {
+
+    }
 
     public cliente(String nombre, String apellidos, String numero, String dni, boolean vip) {
         this.nombre = nombre;
@@ -18,10 +24,17 @@ public class cliente {
         this.numero = numero;
         this.dni = dni;
         this.vip = vip;
-        this.presupuesto = presupuesto;
+        presupuestos = new ListaPresupuestos();
+
     }
 
+    public ListaPresupuestos getPresupuestos() {
+        return presupuestos;
+    }
 
+    public void setPresupuestos(ListaPresupuestos presupuestos) {
+        this.presupuestos = presupuestos;
+    }
 
     public String getNombre() {
         return nombre;
@@ -63,13 +76,6 @@ public class cliente {
         this.vip = vip;
     }
 
-    public List getPresupuesto() {
-        return presupuesto;
-    }
-
-    public void setPresupuesto(List presupuesto) {
-        this.presupuesto = presupuesto;
-    }
 
     @Override
     public String toString() {
