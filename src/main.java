@@ -10,10 +10,18 @@ import java.util.Random;
 public class main {
 
     private static ListaClientes lc = new ListaClientes();
+    private static Fichero miFichero;
 
 
     public static void main(String[] args) {
+        miFichero = new Fichero("clientes.xml");
 
+        lc = (ListaClientes) miFichero.leer();
+        if (lc == null) {
+            lc = new ListaClientes();
+        } else {
+
+        }
         int opcion;
 
         do {
@@ -29,19 +37,33 @@ public class main {
 
                     if (c == null) {
                         alta_cliente();
+                        c = lc.comprobarnumero(numero);
                         presupuesto(c);
 
                     } else {
-                       presupuesto(c);
+                        for (presupuesto p : c.getPresupuestos().getLista()) {
+                            System.out.println(p);
+                        }
+                        presupuesto(c);
                     }
 
                     break;
                 case 3:
-                    pendientes();
-
-
+                    obtenerPresupuestos();
                     break;
                 case 4:
+                    numero = EntradaDatos.pedirCadena("Numero de telefono");
+                    c = lc.comprobarnumero(numero);
+
+                    if (c == null) {
+                        System.out.println("no existe introduce uno correcto");
+
+                    } else {
+                        // Para cada presupuesto de la lista de presupuestos del cliente c sout(p)
+                        for (presupuesto p : c.getPresupuestos().getLista()) {
+                            System.out.println(p);
+                        }
+                    }
 
                     break;
                 case 5:
@@ -80,7 +102,7 @@ public class main {
         System.out.println("");
         System.out.println("_____________________________________");
     }
-0
+
 
     private static void alta_cliente() {
         String nombre = EntradaDatos.pedirCadena("Nonbre: ");
@@ -90,6 +112,7 @@ public class main {
         int vip = EntradaDatos.pedirEntero("Vip  0-NO 1-SI");
         cliente cliente = new cliente(nombre, apellidos, numero, dni, (vip == 0) ? false : true);
         lc.alta(cliente);
+        miFichero.grabar(lc);
         //System.out.println(cliente);
     }
 
@@ -99,22 +122,27 @@ public class main {
         int numeroid = r.nextInt((2147483646 - 2) + 1) + 2;
         String asunto = EntradaDatos.pedirCadena("Asunto");
         Double importeNeto = EntradaDatos.pedirDouble("importe neto");
-        String aceptado = EntradaDatos.pedirCadena("Aceptado: ");
+        String aceptado = EntradaDatos.pedirCadena("Estado: ");
         // creamos el constructor
-        presupuesto presupuesto = new presupuesto (numeroid, asunto, importeNeto ,aceptado);
+        presupuesto presupuesto = new presupuesto(numeroid, asunto, importeNeto, aceptado);
         c.getPresupuestos().alta(presupuesto);
 
     }
 
-    public static void obtenerPresupuestos(){
-      // Recorremos la lista de clientes
+    public static void obtenerPresupuestos() {
+        // Recorremos la lista de clientes
         for (cliente c : lc.getLista()) {
-            System.out.println("Presupuestos del cliente "+c.getNombre() );
+            System.out.println("Presupuestos del cliente " + c.getNombre());
             // Recorremos la lista de presupuestos del cliente
-            for (presupuesto p: c.getPresupuestos().getLista()) {
+            for (presupuesto p : c.getPresupuestos().getLista()) {
                 System.out.println(p);
             }
         }
+    }
+
+    public static void obtenerPresupuestoCliente() {
+
+
     }
 
 

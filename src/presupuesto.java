@@ -12,8 +12,6 @@ public class presupuesto implements Serializable{
     private Double importeNeto;
     private String aceptado;
 
-
-
     public presupuesto() {
     }
 
