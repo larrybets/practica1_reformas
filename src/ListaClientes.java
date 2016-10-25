@@ -40,15 +40,5 @@ public class ListaClientes implements Serializable {
         return null;
     }
 
-    public cliente comprobarnombre(String nombre) {
-        for (cliente c : lista) {
-            if (c.getNombre().equalsIgnoreCase(nombre)) {
-                System.out.println(c.getNombre());
-                return c;
-            }
-        }
-        return null;
-    }
-
 
 }
