@@ -28,7 +28,7 @@ public class cliente implements Serializable {
 
     }
 
-    public ListaPresupuestos getPresupuestos() {
+    public ListaPresupuestos  getPresupuestos() {
         return presupuestos;
     }
 

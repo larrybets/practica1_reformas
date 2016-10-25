@@ -80,7 +80,7 @@ public class main {
         System.out.println("");
         System.out.println("_____________________________________");
     }
-
+0
 
     private static void alta_cliente() {
         String nombre = EntradaDatos.pedirCadena("Nonbre: ");
