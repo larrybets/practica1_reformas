@@ -46,7 +46,7 @@ public class main {
                         }
                         presupuesto(c);
                     }
-
+                    miFichero.grabar(lc);
                     break;
                 case 3:
                     obtenerPresupuestos();
@@ -64,7 +64,6 @@ public class main {
                             System.out.println(p);
                         }
                     }
-
                     break;
                 case 5:
                     System.out.println("Presupuestos rechazados");
@@ -73,7 +72,8 @@ public class main {
 
                     break;
                 case 6:
-
+                    System.out.println("Listado Presupuestos y numero de presupuestos segun cliente");
+                    totales();
                     break;
                 case 7:
 
@@ -149,6 +149,13 @@ public class main {
         for (cliente c : lc.getLista()) {
             p = c.getPresupuestos().obtenerPresupuestoEstado("rechazado");
             System.out.println(p);
+        }
+    }
+
+    public static void totales() {
+        for (cliente x : lc.getLista()) {
+            System.out.println(x + "  " + x.getPresupuestos().getLista().size());
+            System.out.println("*******");
         }
     }
 }
