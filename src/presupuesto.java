@@ -10,7 +10,7 @@ public class presupuesto implements Serializable{
     private int numero_presupuesto;
     private String asunto;
     private Double importeNeto;
-    private String aceptado;
+    private String estado;
 
     public presupuesto() {
     }
@@ -19,7 +19,7 @@ public class presupuesto implements Serializable{
         this.numero_presupuesto = numero_presupuesto;
         this.asunto = asunto;
         this.importeNeto = importeNeto;
-        this.aceptado = aceptado;
+        this.estado = aceptado;
     }
 
     public int getNumero_presupuesto() {
@@ -47,11 +47,11 @@ public class presupuesto implements Serializable{
     }
 
     public String getAceptado() {
-        return aceptado;
+        return estado;
     }
 
     public void setAceptado(String aceptado) {
-        this.aceptado = aceptado;
+        this.estado = aceptado;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class presupuesto implements Serializable{
                 "numero_presupuesto=" + numero_presupuesto +
                 ", asunto='" + asunto + '\'' +
                 ", importeNeto=" + importeNeto +
-                ", aceptado='" + aceptado + '\'' +
+                ", aceptado='" + estado + '\'' +
                 '}';
     }
 }

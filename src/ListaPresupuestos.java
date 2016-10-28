@@ -25,4 +25,13 @@ public class ListaPresupuestos implements Serializable {
     public void setLista(ArrayList<presupuesto> lista) {
         this.lista = lista;
     }
+
+    public presupuesto obtenerPresupuestoEstado(String estado) {
+        for (presupuesto g : lista) {
+            if (g.getAceptado().equalsIgnoreCase(estado)) {
+                return g;
+            }
+        }
+        return null;
+    }
 }

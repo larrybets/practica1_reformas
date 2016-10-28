@@ -68,7 +68,7 @@ public class main {
                     break;
                 case 5:
                     System.out.println("Presupuestos rechazados");
-                    obtenerRechazado();
+                    PresupuestoRechazado();
                     System.out.println("************************");
 
                     break;
@@ -134,6 +134,7 @@ public class main {
 
     public static void obtenerPresupuestos() {
         // Recorremos la lista de clientes
+        System.out.println("Presupuestos pendientes");
         for (cliente c : lc.getLista()) {
             System.out.println("Presupuestos del cliente " + c.getNombre());
             // Recorremos la lista de presupuestos del cliente
@@ -143,19 +144,13 @@ public class main {
         }
     }
 
-    public static void obtenerRechazado() {
-
-        for (cliente c : lc.getLista()){
-            ListaPresupuestos todos = c.getPresupuestos();
-
-            for(presupuesto p :todos.getLista()){
-
-            }
+    public static void PresupuestoRechazado() {
+        presupuesto p = null;
+        for (cliente c : lc.getLista()) {
+            p = c.getPresupuestos().obtenerPresupuestoEstado("rechazado");
+            System.out.println(p);
         }
-
     }
-
-
 }
 
 
